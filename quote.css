@@ -154,7 +154,9 @@ header h1 {
     background: linear-gradient(to right, #141212, #505050, #141212);
     color: white;
 }
-
+.mainbox, .input, button, .outerinput, h2, .empty {
+    transition: all 0.2s ease-in-out
+}
 section {
     background-color: rgba(133, 73, 224, 0.463);
     display: flex;
