@@ -9,16 +9,22 @@ let emptyDiv = document.querySelector(".empty")
 let outerInput = document.querySelector(".outerinput")
 let mainbox = document.querySelector(".mainbox")
 let toggleBtn = document.querySelector("#darkMode");
+let voiceBtn = document.querySelector("#voice")
+
+let isVoiceOn = true;
+voiceBtn.addEventListener("click", () => {
+    isVoiceOn = !isVoiceOn;
+    voiceBtn.textContent = isVoiceOn ? "🔊 Voice: ON" : "🔇 Voice: OFF";
+    speechSynthesis.cancel(); // just stop the current voice if speaking
+});
 
 toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     // Toggle button text
     if (document.body.classList.contains("dark-mode")) {
         toggleBtn.textContent = "☀️ Light Mode";
-        mainbox.style.background = "linear-gradient(to right,rgb(121, 125, 255),rgb(174, 121, 254), rgb(121, 125, 255)";
     } else {
         toggleBtn.textContent = "🌙 Dark Mode";
-        mainbox.style.background = "linear-gradient(to right, #ccceff, #e8dbfb, #ccceff)";
     }
 });
 
@@ -119,9 +125,8 @@ function capitalizeWords(str) {
 }
 let length = quotes.length
 
+let quote = Math.floor(Math.random() * quotes.length);
 btn.addEventListener("click", () => {
-    let quote;
-
     if (shownQuotes.size === quotes.length) {
         alert("You’ve seen all the quotes! Starting again ✨");
         shownQuotes.clear();
@@ -131,10 +136,8 @@ btn.addEventListener("click", () => {
     } while (shownQuotes.has(quote));
 
     shownQuotes.add(quote);
-    // let quote = Math.floor(Math.random() * length);
     let inptVal = capitalizeWords(input.value);
     if (inptVal == "" && btn.textContent == "Generate Quote") {
-        // if(inputDiv.style.visibility == "visible"){
         emptyDiv.textContent = "Enter your name first... "
         emptyDiv.style.visibility = "visible"
         return
@@ -148,8 +151,10 @@ btn.addEventListener("click", () => {
         outerInput.style.height = "4.25rem"
         outerInput.style.padding = "15px"
         outerInput.textContent = `${quotes[quote]}`
-        let utterance = new SpeechSynthesisUtterance(quotes[quote]);
-        speechSynthesis.speak(utterance);
+        if (isVoiceOn) {
+            let utterance = new SpeechSynthesisUtterance(quotes[quote]);
+            speechSynthesis.speak(utterance);
+        }
         if (inptVal == "") {
             return
         } else {
