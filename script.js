@@ -10,6 +10,7 @@ let outerInput = document.querySelector(".outerinput")
 let mainbox = document.querySelector(".mainbox")
 let toggleBtn = document.querySelector("#darkMode");
 let voiceBtn = document.querySelector("#voice")
+let copy = document.querySelector("#copy")
 
 let isVoiceOn = true;
 voiceBtn.addEventListener("click", () => {
@@ -123,6 +124,7 @@ function capitalizeWords(str) {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 }
+
 let length = quotes.length
 
 let quote = Math.floor(Math.random() * quotes.length);
@@ -142,8 +144,17 @@ btn.addEventListener("click", () => {
         emptyDiv.style.visibility = "visible"
         return
     } else {
+        copy.style.visibility = "visible";
+        if (copy.style.visibility == "visible") {
+            copy.addEventListener("click", () => {
+                navigator.clipboard.writeText(outerInput.textContent);
+                emptyDiv.classList = "copyText"
+                emptyDiv.style.visibility = "visible"
+                emptyDiv.textContent = "Text copied to clipboard"
+            });
+        }
         console.log("btn is clicked!")
-        console.log(inptVal)
+        console.log(inptVal);
         input.value = ""
         inputDiv.style.visibility = "hidden"
         emptyDiv.style.visibility = "hidden"
@@ -161,4 +172,5 @@ btn.addEventListener("click", () => {
             inptH2.textContent = `Welcome, ${inptVal} 💜`;
         }
     }
-})
+}
+)
