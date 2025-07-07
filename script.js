@@ -153,6 +153,8 @@ btn.addEventListener("click", () => {
                 emptyDiv.textContent = "Text copied to clipboard"
                 if(toggleBtn.textContent == "☀️ Light Mode"){
                     emptyDiv.style.color = "white"
+                }else{
+                    emptyDiv.style.color = "navy"
                 }
             });
         }
