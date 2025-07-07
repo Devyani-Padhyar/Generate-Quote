@@ -58,7 +58,7 @@ header h1 {
     font-size: 16px;
     box-shadow: 0 0 5px black;
     transition: 0.3s ease;
-    /* position: relative; */
+
 }
 
 .voiceDiv {
@@ -128,20 +128,20 @@ header h1 {
     text-shadow: 2px 2px 6px rgba(200, 160, 255, 0.4);
 }
 
-.dark-mode .btn button:hover {
-    background-color: #7a57ff;
-    color: #fff;
-}
-
 .dark-mode .btn button {
     background-color: #6236ffb6;
     color: #ffffff;
     box-shadow: 0px 0px 5px 2px #000000;
 }
 
+.dark-mode .btn button:hover {
+    background-color: #7a57ff;
+    color: #fff;
+}
+
 .dark-mode .mainbox {
     background: linear-gradient(to right, #1e1e2f, #2c2c3e, #1e1e2f);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.17);
 }
 
 .dark-mode section {
@@ -154,9 +154,15 @@ header h1 {
     background: linear-gradient(to right, #141212, #505050, #141212);
     color: white;
 }
-.mainbox, .input, button, .outerinput, h2, .empty {
+
+.mainbox,
+.input,
+.outerinput,
+h2,
+.empty {
     transition: all 0.2s ease-in-out
 }
+
 section {
     background-color: rgba(133, 73, 224, 0.463);
     display: flex;
@@ -299,6 +305,33 @@ main {
     transform: translateY(2px);
 }
 
+.copyText {
+    position: absolute;
+    top: 0.5rem;
+    color: rgb(47, 43, 44);
+    font-size: 16px;
+    font-weight: 600;
+    animation: none;
+    visibility: visible;
+}
+
+#copy {
+    position: absolute;
+    background-color: #8217eda7;
+    right: 1rem;
+    visibility: hidden;
+    animation: none;
+    bottom: 17rem;
+    z-index: 10;
+    padding: 5px 5px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0px 0px 3px 2px black;
+    animation: fadeIn 1s ease-out;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -400,7 +433,7 @@ footer p {
     .btns {
         top: 10.5rem;
         gap: 2rem;
-        margin-left:35px
+        margin-left: 35px
     }
 }
 
@@ -408,6 +441,10 @@ footer p {
 (height:900px) {
     .empty {
         top: 8.3rem;
+    }
+
+    .copyText {
+        top: 1rem;
     }
 
     section {
