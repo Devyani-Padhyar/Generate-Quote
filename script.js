@@ -151,6 +151,9 @@ btn.addEventListener("click", () => {
                 emptyDiv.classList = "copyText"
                 emptyDiv.style.visibility = "visible"
                 emptyDiv.textContent = "Text copied to clipboard"
+                if(toggleBtn.textContent == "☀️ Light Mode"){
+                    emptyDiv.style.color = "white"
+                }
             });
         }
         console.log("btn is clicked!")
